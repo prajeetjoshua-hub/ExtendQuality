@@ -4,7 +4,10 @@ EXtendQuality is an explainable, multi-level AI inspection concept for bearing m
 
 ## Live demo
 
-[Open the EXtendQuality dashboard](https://extendquality-dashboard.prajeetjoshua-p.chatgpt.site/)
+[Open the EXtendQuality dashboard](https://prajeetjoshua-hub.github.io/ExtendQuality/)
+
+The presentation build is deployed directly from this repository through the
+`Deploy EXtendQuality to GitHub Pages` workflow.
 
 ## Prototype interface
 
