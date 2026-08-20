@@ -30,6 +30,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,3 +41,34 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# Python backend
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Runtime inspection data (folder placeholders remain tracked)
+/storage/raw/*
+!/storage/raw/.gitkeep
+/storage/processed/*
+!/storage/processed/.gitkeep
+/storage/overlays/*
+!/storage/overlays/.gitkeep
+/storage/reviewed/*
+!/storage/reviewed/.gitkeep
+/storage/training_candidates/*
+!/storage/training_candidates/.gitkeep
+/storage/metadata/*
+!/storage/metadata/.gitkeep
+
+# ML model weights and training runs
+/models/weights/*
+!/models/weights/.gitkeep
+/runs/
+*.pt
+*.onnx
+*.engine

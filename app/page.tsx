@@ -99,7 +99,7 @@ export default function Home() {
 
           <section className="module-grid" aria-label="Inspection modules">
             {cards.map((card) => (
-              <article className="module-card" key={card.number} aria-disabled="true">
+              <article className="module-card" key={card.number} data-locked="true">
                 <div className="card-underlay" aria-hidden="true">
                   <div className="scan-line" />
                   <span>{card.ghost}</span>
