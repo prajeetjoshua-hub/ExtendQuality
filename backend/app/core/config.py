@@ -19,6 +19,12 @@ class Settings:
     database_path: Path
     storage_path: Path
     allowed_origins: list[str]
+    max_upload_bytes: int
+    yolo_weights_path: Path
+    yolo_confidence_threshold: float
+    decision_confidence_threshold: float
+    recapture_quality_threshold: float
+    vlm_provider: str
 
 
 @lru_cache
@@ -40,4 +46,20 @@ def get_settings() -> Settings:
             os.getenv("EXTENDQUALITY_STORAGE_PATH", "storage")
         ),
         allowed_origins=[item.strip() for item in origins.split(",") if item.strip()],
+        max_upload_bytes=int(
+            os.getenv("EXTENDQUALITY_MAX_UPLOAD_BYTES", str(10 * 1024 * 1024))
+        ),
+        yolo_weights_path=_repository_path(
+            os.getenv("EXTENDQUALITY_YOLO_WEIGHTS", "models/weights/best.pt")
+        ),
+        yolo_confidence_threshold=float(
+            os.getenv("EXTENDQUALITY_YOLO_CONFIDENCE", "0.35")
+        ),
+        decision_confidence_threshold=float(
+            os.getenv("EXTENDQUALITY_DECISION_CONFIDENCE", "0.65")
+        ),
+        recapture_quality_threshold=float(
+            os.getenv("EXTENDQUALITY_RECAPTURE_QUALITY", "0.45")
+        ),
+        vlm_provider=os.getenv("EXTENDQUALITY_VLM_PROVIDER", "demo").lower(),
     )

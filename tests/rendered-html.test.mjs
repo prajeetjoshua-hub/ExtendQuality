@@ -31,19 +31,18 @@ test("server-renders the EXtendQuality inspector dashboard", async () => {
   assert.match(html, /<title>EXtendQuality \| Intelligent Bearing Inspection<\/title>/i);
   assert.match(html, /Inspection intelligence/);
   assert.match(html, /Camera Feed/);
-  assert.match(html, /VLM Analysis/);
+  assert.match(html, /Processing Analysis/);
   assert.match(html, /VLM Recommendation/);
-  assert.match(html, /Previous Defects/);
+  assert.match(html, /Previous defects/i);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/);
 });
 
-test("keeps unfinished inspection modules explicitly locked", async () => {
+test("renders the connected inspection controls and safety messaging", async () => {
   const response = await render();
   const html = await response.text();
-  const visibleHtml = html.split('<script id="_R_">', 1)[0];
-
-  assert.equal((visibleHtml.match(/MODULE LOCKED/g) ?? []).length, 3);
-  assert.equal((visibleHtml.match(/data-locked="true"/g) ?? []).length, 3);
-  assert.match(html, /Secure local processing/);
-  assert.match(html, /Human-in-the-loop ready/);
+  assert.match(html, /Run inspection/);
+  assert.match(html, /Start camera/);
+  assert.match(html, /OpenCV preprocessing/);
+  assert.match(html, /Inspector decision recorded/);
+  assert.doesNotMatch(html, /MODULE LOCKED/);
 });

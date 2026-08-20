@@ -69,6 +69,20 @@ pip install -r backend/requirements-vision.txt
 
 API health check: `http://127.0.0.1:8000/api/health`
 
+Interactive API documentation: `http://127.0.0.1:8000/docs`
+
+Day 1 inspection endpoints:
+
+- `POST /api/inspections` uploads a captured bearing image.
+- `GET /api/inspections` returns recent inspection history.
+- `GET /api/inspections/{id}` returns stored evidence and decisions.
+- `POST /api/inspections/{id}/review` records the inspector's accept/reject decision.
+
+Until validated YOLO weights are placed at `models/weights/best.pt`, the API
+labels its bounding boxes as OpenCV anomaly candidates and always routes them to
+review. The default VLM output is also explicitly marked as a rule-based demo;
+it is not presented as production model reasoning.
+
 ## Build
 
 ```bash
